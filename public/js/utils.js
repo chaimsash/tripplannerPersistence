@@ -6,6 +6,21 @@
  * through abstraction. It could easily be replaced by lodash.
  */
 
+// var hotels;
+// var restaurants;
+// var activities;
+
+//   $.ajax({
+//   method: 'GET',
+//   url: '/api/options'
+// })
+//   .then(function(options) {
+//     // console.log(options)
+//     // console.log(options.templateHotels)
+//     hotels = options.templateHotels;
+//     restaurants = options.templateRestaurants;
+//     activities = options.templateActivities;
+//   })
 var utilsModule = {
 
   // copies properties from source onto target object

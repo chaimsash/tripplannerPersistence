@@ -8,6 +8,21 @@
  */
 
 var attractionsModule = (function () {
+// var hotels;
+// var restaurants;
+// var activities;
+
+//   $.ajax({
+//   method: 'GET',
+//   url: '/api/options'
+// })
+//   .then(function(options) {
+//     console.log(options)
+//     console.log(options.templateHotels)
+//     hotels = options.templateHotels;
+//     restaurants = options.templateRestaurants;
+//     activities = options.templateActivities;
+//   }).then(function() {
 
   // application state
 
@@ -48,4 +63,10 @@ var attractionsModule = (function () {
 
   return publicAPI;
 
+
+
 }());
+
+
+
+
