@@ -82,6 +82,26 @@ var tripModule = (function () {
 
     addToCurrent: function (attraction) {
       currentDay.addAttraction(attraction);
+
+      //adding to the backend
+      console.log(" this thing " , attraction)
+      var url = '/api/days/' + currentDay.number.toString() + '/' + attraction.type
+      // var string = JSON.stringify(attraction)
+      // attraction.$itineraryItem = null;
+      $.ajax({
+        method: 'POST',
+        url: url,
+        data: {
+          type: attraction.type,
+          id: attraction.id,
+          placeId: attraction.placeId,
+          name: attraction.name,
+          price: attraction.price,
+          cuisine: attraction.cuisine
+        }, //.val()
+        // dataType: "json"
+        // processData: false
+      })
     },
 
     removeFromCurrent: function (attraction) {

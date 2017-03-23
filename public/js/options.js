@@ -8,21 +8,6 @@
  * that attraction's id. Selecting an option looks up the attraction by id,
  * then tells the trip module to add the attraction.
  */
-var hotels;
-var restaurants;
-var activities;
-
-$.ajax({
-  method: 'GET',
-  url: '/api/options'
-})
-  .then(function(options) {
-    console.log(options)
-    console.log(options.templateHotels)
-    hotels = options.templateHotels;
-    restaurants = options.templateRestaurants;
-    activities = options.templateActivities;
-  }).then(function() {
 
 
 
@@ -37,9 +22,12 @@ $(function(){
   var $activitySelect = $optionsPanel.find('#activity-choices');
 
   // make all the option tags (second arg of `forEach` is a `this` binding)
-  hotels.forEach(makeOption, $hotelSelect);
-  restaurants.forEach(makeOption, $restaurantSelect);
-  activities.forEach(makeOption, $activitySelect);
+  //tripmodule.hotelpromise.then
+  dataModule.allPromises.then(function({templateActivities, templateHotels, templateRestaurants}) {
+    templateRestaurants.forEach(makeOption, $restaurantSelect);
+    templateHotels.forEach(makeOption, $hotelSelect);
+    templateActivities.forEach(makeOption, $activitySelect);
+  })
 
   function makeOption (databaseAttraction) {
     var $option = $('<option></option>') // makes a new option tag
@@ -59,5 +47,4 @@ $(function(){
     tripModule.addToCurrent(attraction);
   });
 });
-  })
 

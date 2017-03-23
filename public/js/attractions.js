@@ -8,29 +8,27 @@
  */
 
 var attractionsModule = (function () {
-// var hotels;
-// var restaurants;
-// var activities;
-
-//   $.ajax({
-//   method: 'GET',
-//   url: '/api/options'
-// })
-//   .then(function(options) {
-//     console.log(options)
-//     console.log(options.templateHotels)
-//     hotels = options.templateHotels;
-//     restaurants = options.templateRestaurants;
-//     activities = options.templateActivities;
-//   }).then(function() {
-
   // application state
+  var enhanced;
 
-  var enhanced = {
-    hotels: hotels.map(attractionModule.create),
-    restaurants: restaurants.map(attractionModule.create),
-    activities: activities.map(attractionModule.create),
-  };
+  dataModule.allPromises.then(function({templateActivities, templateHotels, templateRestaurants}) {
+    var hotels;
+    var activities;
+    var restaurants;
+    enhanced = {
+      hotels : templateHotels.map(attractionModule.create),
+      activities : templateActivities.map(attractionModule.create),
+      restaurants : templateRestaurants.map(attractionModule.create)
+    }
+  })
+
+  // var enhanced = {
+  //   hotels: hotels.map(attractionModule.create),
+  //   restaurants: restaurants.map(attractionModule.create),
+  //   activities: activities.map(attractionModule.create),
+  // };
+
+  //promiseAll...hotels = data[0].....thn enhanced={}
 
   // private helper methods (only available inside the module)
 

@@ -1,5 +1,6 @@
 var db = require('./_db');
 
+var Day = require('./day')
 var Place = require('./place');
 var Hotel = require('./hotel');
 var Restaurant = require('./restaurant');
