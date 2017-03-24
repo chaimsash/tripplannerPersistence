@@ -64,7 +64,3 @@ var attractionsModule = (function () {
 
 
 }());
-
-
-
-

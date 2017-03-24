@@ -1,20 +1,19 @@
 var dataModule = (function() {
-
+  // var dayNum = 1 + '';
   var publicAPI = {
     allPromises: $.ajax({
       method: 'GET',
       url: '/api/options'
+    }),
+    allDays: $.ajax({
+      method: 'GET',
+      url: '/api/days'
+    }),
+    oneDay: $.ajax({
+      method: 'GET',
+      url: '/api/days/'
     })
-    //   .then(function(options) {
-    //     hotels = options.templateHotels;
-    //     restaurants = options.templateRestaurants;
-    //     activities = options.templateActivities;
-    //   })
-    // }
-  }
+  };
 
   return publicAPI;
 }());
-
-
-

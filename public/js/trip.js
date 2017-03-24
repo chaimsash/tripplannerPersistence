@@ -84,10 +84,8 @@ var tripModule = (function () {
       currentDay.addAttraction(attraction);
 
       //adding to the backend
-      console.log(" this thing " , attraction)
-      var url = '/api/days/' + currentDay.number.toString() + '/' + attraction.type
-      // var string = JSON.stringify(attraction)
-      // attraction.$itineraryItem = null;
+      var url = '/api/days/' + currentDay.number.toString() + '/' + attraction.type;
+
       $.ajax({
         method: 'POST',
         url: url,
@@ -98,14 +96,25 @@ var tripModule = (function () {
           name: attraction.name,
           price: attraction.price,
           cuisine: attraction.cuisine
-        }, //.val()
-        // dataType: "json"
-        // processData: false
-      })
+        }
+      });
     },
 
     removeFromCurrent: function (attraction) {
+      var url = '/api/days/' + currentDay.number.toString() + '/' + attraction.type;
       currentDay.removeAttraction(attraction);
+      $.ajax({
+        method: 'DELETE',
+        url: url,
+        data: {
+          type: attraction.type,
+          id: attraction.id,
+          placeId: attraction.placeId,
+          name: attraction.name,
+          price: attraction.price,
+          cuisine: attraction.cuisine
+        }
+      });
     }
 
   };
